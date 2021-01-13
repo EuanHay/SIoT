@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../static/style.css" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        const guardian_score = {{news_data[2]}}
+        const bbc_score = {{news_data[3]}}
+        let date_index = 0
+        function update() {
+            index = document.getElementById("news-select").value
+            date_index = document.getElementById("date-select").value
+            if (index === 'guardian'){
+                if(date_index === '0') {
+                    document.getElementById("guardian-block1").style.display = 'block'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'block'
+                    document.getElementById("bbc-score-block").style.display = 'none'}
+                else if(date_index === '1') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'block'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'block'
+                    document.getElementById("bbc-score-block").style.display = 'none'}
+                else if(date_index === '2') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'block'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'block'
+                    document.getElementById("bbc-score-block").style.display = 'none'}
+                else if(date_index === '3') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'block'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'block'
+                    document.getElementById("bbc-score-block").style.display = 'none'}
+                else if(date_index === '4') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'block'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'block'
+                    document.getElementById("bbc-score-block").style.display = 'none'}
+                else if(date_index === '5') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'block'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'block'
+                    document.getElementById("bbc-score-block").style.display = 'none'}
+                else if(date_index === '6') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'block'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'block'
+                    document.getElementById("bbc-score-block").style.display = 'none'}
+            } else if (index === 'bbc'){
+                if(date_index === '0') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'block'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'none'
+                    document.getElementById("bbc-score-block").style.display = 'block'}
+                else if(date_index === '1') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'block'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'none'
+                    document.getElementById("bbc-score-block").style.display = 'block'}
+                else if(date_index === '2') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'block'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'none'
+                    document.getElementById("bbc-score-block").style.display = 'block'}
+                else if(date_index === '3') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'block'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'none'
+                    document.getElementById("bbc-score-block").style.display = 'block'}
+                else if(date_index === '4') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'block'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'none'
+                    document.getElementById("bbc-score-block").style.display = 'block'}
+                else if(date_index === '5') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'block'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'none'
+                    document.getElementById("guardian-score-block").style.display = 'none'
+                    document.getElementById("bbc-score-block").style.display = 'block'}
+                else if(date_index === '6') {
+                    document.getElementById("guardian-block1").style.display = 'none'
+                    document.getElementById("bbc-block1").style.display = 'none'
+                    document.getElementById("guardian-block2").style.display = 'none'
+                    document.getElementById("bbc-block2").style.display = 'none'
+                    document.getElementById("guardian-block3").style.display = 'none'
+                    document.getElementById("bbc-block3").style.display = 'none'
+                    document.getElementById("guardian-block4").style.display = 'none'
+                    document.getElementById("bbc-block4").style.display = 'none'
+                    document.getElementById("guardian-block5").style.display = 'none'
+                    document.getElementById("bbc-block5").style.display = 'none'
+                    document.getElementById("guardian-block6").style.display = 'none'
+                    document.getElementById("bbc-block6").style.display = 'none'
+                    document.getElementById("guardian-block7").style.display = 'none'
+                    document.getElementById("bbc-block7").style.display = 'block'
+                    document.getElementById("guardian-score-block").style.display = 'none'
+                    document.getElementById("bbc-score-block").style.display = 'block'}
+            }
+        }
+    </script>
+    <title>News</title>
+</head>
+<body>
+<div>
+    <button onclick= homePage() style="margin: 10px" class="btn">
+        <
+    </button>
+</div>
+<script type="text/javascript">
+    function homePage() {
+        window.location = '/'
+    }
+</script>
+<center>
+    <div id="heading" class="heading">
+        <h1>
+            Sentiment Analysis of Different News Sources
+        </h1>
+    </div>
+</center>
+<center>
+    <div id="news-selection"style="max-width: 30%">
+        <form method="POST">
+            <div class="form-group">
+                <h3>News Source</h3>
+                <select id="news-select" onchange={update()} class="select" name="news">
+                    <option value="">Select news source</option>
+                    <option value="guardian">The Guardian</option>
+                    <option value="bbc">BBC</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <center>
+        <div style="max-width: 30%">
+            <form method="POST">
+                <div class="form-group">
+                    <select id="date-select" onchange={update()} class="select" name="news">
+                        <option value=0>02-01-21</option>
+                        <option value=1>03-01-21</option>
+                        <option value=2>04-01-21</option>
+                        <option value=3>05-01-21</option>
+                        <option value=4>06-01-21</option>
+                        <option value=5>07-01-21</option>
+                        <option value=6>08-01-21</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </center>
+    <div id="guardian-block1" style="display: none">
+        <h3>{{news_data[0][0][0]}}</h3>
+        <h3>{{news_data[0][0][1]}}</h3>
+        <h3>{{news_data[0][0][2]}}</h3>
+        <h3>{{news_data[0][0][3]}}</h3>
+        <h3>{{news_data[0][0][4]}}</h3>
+        <h3>{{news_data[0][0][5]}}</h3>
+        <h3>{{news_data[0][0][6]}}</h3>
+        <h3>{{news_data[0][0][7]}}</h3>
+    </div>
+    <div id="guardian-block2" style="display: none">
+        <h3>{{news_data[0][1][0]}}</h3>
+        <h3>{{news_data[0][1][1]}}</h3>
+        <h3>{{news_data[0][1][2]}}</h3>
+        <h3>{{news_data[0][1][3]}}</h3>
+        <h3>{{news_data[0][1][4]}}</h3>
+        <h3>{{news_data[0][1][5]}}</h3>
+        <h3>{{news_data[0][1][6]}}</h3>
+        <h3>{{news_data[0][1][7]}}</h3>
+    </div>
+    <div id="guardian-block3" style="display: none">
+        <h3>{{news_data[0][2][0]}}</h3>
+        <h3>{{news_data[0][2][1]}}</h3>
+        <h3>{{news_data[0][2][2]}}</h3>
+        <h3>{{news_data[0][2][3]}}</h3>
+        <h3>{{news_data[0][2][4]}}</h3>
+        <h3>{{news_data[0][2][5]}}</h3>
+        <h3>{{news_data[0][2][6]}}</h3>
+        <h3>{{news_data[0][2][7]}}</h3>
+    </div>
+    <div id="guardian-block4" style="display: none">
+        <h3>{{news_data[0][3][0]}}</h3>
+        <h3>{{news_data[0][3][1]}}</h3>
+        <h3>{{news_data[0][3][2]}}</h3>
+        <h3>{{news_data[0][3][3]}}</h3>
+        <h3>{{news_data[0][3][4]}}</h3>
+        <h3>{{news_data[0][3][5]}}</h3>
+        <h3>{{news_data[0][3][6]}}</h3>
+        <h3>{{news_data[0][3][7]}}</h3>
+    </div>
+    <div id="guardian-block5" style="display: none">
+        <h3>{{news_data[0][4][0]}}</h3>
+        <h3>{{news_data[0][4][1]}}</h3>
+        <h3>{{news_data[0][4][2]}}</h3>
+        <h3>{{news_data[0][4][3]}}</h3>
+        <h3>{{news_data[0][4][4]}}</h3>
+        <h3>{{news_data[0][4][5]}}</h3>
+        <h3>{{news_data[0][4][6]}}</h3>
+        <h3>{{news_data[0][4][7]}}</h3>
+    </div>
+    <div id="guardian-block6" style="display: none">
+        <h3>{{news_data[0][5][0]}}</h3>
+        <h3>{{news_data[0][5][1]}}</h3>
+        <h3>{{news_data[0][5][2]}}</h3>
+        <h3>{{news_data[0][5][3]}}</h3>
+        <h3>{{news_data[0][5][4]}}</h3>
+        <h3>{{news_data[0][5][5]}}</h3>
+        <h3>{{news_data[0][5][6]}}</h3>
+        <h3>{{news_data[0][5][7]}}</h3>
+    </div>
+    <div id="guardian-block7" style="display: none">
+        <h3>{{news_data[0][6][0]}}</h3>
+        <h3>{{news_data[0][6][1]}}</h3>
+        <h3>{{news_data[0][6][2]}}</h3>
+        <h3>{{news_data[0][6][3]}}</h3>
+        <h3>{{news_data[0][6][4]}}</h3>
+        <h3>{{news_data[0][6][5]}}</h3>
+        <h3>{{news_data[0][6][6]}}</h3>
+        <h3>{{news_data[0][6][7]}}</h3>
+    </div>
+    <div id="guardian-score-block" style="display: none">
+        <header style="display: inline-flex">
+            <h1>Total Score:</h1>
+            <h1 style="color: #080808"> a</h1>
+            <h1 id="guardian-score" style="color: green"> {{news_data[2][0]}}</h1>
+        </header>
+    </div>
+    <div id="bbc-block1" style="display: none">
+        <h3>{{news_data[1][0][0]}}</h3>
+        <h3>{{news_data[1][0][1]}}</h3>
+        <h3>{{news_data[1][0][2]}}</h3>
+        <h3>{{news_data[1][0][3]}}</h3>
+        <h3>{{news_data[1][0][4]}}</h3>
+        <h3>{{news_data[1][0][5]}}</h3>
+        <h3>{{news_data[1][0][6]}}</h3>
+        <h3>{{news_data[1][0][7]}}</h3>
+    </div>
+    <div id="bbc-block2" style="display: none">
+        <h3>{{news_data[1][1][0]}}</h3>
+        <h3>{{news_data[1][1][1]}}</h3>
+        <h3>{{news_data[1][1][2]}}</h3>
+        <h3>{{news_data[1][1][3]}}</h3>
+        <h3>{{news_data[1][1][4]}}</h3>
+        <h3>{{news_data[1][1][5]}}</h3>
+        <h3>{{news_data[1][1][6]}}</h3>
+        <h3>{{news_data[1][1][7]}}</h3>
+    </div>
+    <div id="bbc-block3" style="display: none">
+        <h3>{{news_data[1][2][0]}}</h3>
+        <h3>{{news_data[1][2][1]}}</h3>
+        <h3>{{news_data[1][2][2]}}</h3>
+        <h3>{{news_data[1][2][3]}}</h3>
+        <h3>{{news_data[1][2][4]}}</h3>
+        <h3>{{news_data[1][2][5]}}</h3>
+        <h3>{{news_data[1][2][6]}}</h3>
+        <h3>{{news_data[1][2][7]}}</h3>
+    </div>
+    <div id="bbc-block4" style="display: none">
+        <h3>{{news_data[1][3][0]}}</h3>
+        <h3>{{news_data[1][3][1]}}</h3>
+        <h3>{{news_data[1][3][2]}}</h3>
+        <h3>{{news_data[1][3][3]}}</h3>
+        <h3>{{news_data[1][3][4]}}</h3>
+        <h3>{{news_data[1][3][5]}}</h3>
+        <h3>{{news_data[1][3][6]}}</h3>
+        <h3>{{news_data[1][3][7]}}</h3>
+    </div>
+    <div id="bbc-block5" style="display: none">
+        <h3>{{news_data[1][4][0]}}</h3>
+        <h3>{{news_data[1][4][1]}}</h3>
+        <h3>{{news_data[1][4][2]}}</h3>
+        <h3>{{news_data[1][4][3]}}</h3>
+        <h3>{{news_data[1][4][4]}}</h3>
+        <h3>{{news_data[1][4][5]}}</h3>
+        <h3>{{news_data[1][4][6]}}</h3>
+        <h3>{{news_data[1][4][7]}}</h3>
+    </div>
+    <div id="bbc-block6" style="display: none">
+        <h3>{{news_data[1][5][0]}}</h3>
+        <h3>{{news_data[1][5][1]}}</h3>
+        <h3>{{news_data[1][5][2]}}</h3>
+        <h3>{{news_data[1][5][3]}}</h3>
+        <h3>{{news_data[1][5][4]}}</h3>
+        <h3>{{news_data[1][5][5]}}</h3>
+        <h3>{{news_data[1][5][6]}}</h3>
+        <h3>{{news_data[1][5][7]}}</h3>
+    </div>
+    <div id="bbc-block7" style="display: none">
+        <h3>{{news_data[1][6][0]}}</h3>
+        <h3>{{news_data[1][6][1]}}</h3>
+        <h3>{{news_data[1][6][2]}}</h3>
+        <h3>{{news_data[1][6][3]}}</h3>
+        <h3>{{news_data[1][6][4]}}</h3>
+        <h3>{{news_data[1][6][5]}}</h3>
+        <h3>{{news_data[1][6][6]}}</h3>
+        <h3>{{news_data[1][6][7]}}</h3>
+    </div>
+    <div id="bbc-score-block" style="display: none">
+        <header style="display: inline-flex">
+            <h1>Total Score:</h1>
+            <h1 style="color: #080808"> a</h1>
+            <h1 id="bbc-score" style="color: red"> {{news_data[3][0]}}</h1>
+        </header>
+    </div>
+</center>
+<div>
+    <script type="text/javascript">
+        document.getElementById("date-select").addEventListener('change', e => {
+            let date_index = document.getElementById("date-select").value;
+            let g_score = guardian_score[date_index]
+            document.getElementById('guardian-score').innerText=g_score
+            if (g_score >= 0) {
+                document.getElementById('guardian-score').style.color = "green"
+            } else {
+                document.getElementById('guardian-score').style.color = "red"
+            }
+            let b_score = bbc_score[date_index]
+            document.getElementById('bbc-score').innerText=b_score
+            if (b_score >= 0) {
+                document.getElementById('bbc-score').style.color = "green"
+            } else {
+                document.getElementById('bbc-score').style.color = "red"
+            }
+        })
+    </script>
+</div>
+</body>
+</html>

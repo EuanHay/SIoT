@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../static/style.css" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Homepage</title>
+  </head>
+  <body>
+    <center>
+      <div id="heading" class="heading">
+        <h1>News and Snooze</h1>
+        <h5 style="max-width: 70%">The media we consume and how we consume it has a huge impact on our mood, emotions and activity. This project sought to explore whether the news we consume has any significant impact on the quality of our sleep. Accelerometer and microphone data were collected using a Raspberry Pi 3B+ and an Arduino Uno, which could be used to assess sleep quality. Natural Language Processing (NLP) techniques and sentiment analysis was performed on the top headlines of mainstream news outlets.</h5>
+      </div>
+      <form action="sleep/1">
+        <input type="submit" value="Sleep Monitoring" class="btn"/>
+      </form>
+      <form action="news">
+        <input type="submit" value="News Sentiment Analysis" class="btn"/>
+      </form>
+      <form action="comparison">
+        <input type="submit" value="Comparison" class="btn"/>
+      </form>
+    </center>
+  </body>
+</html>

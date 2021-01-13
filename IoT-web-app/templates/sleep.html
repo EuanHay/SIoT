@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../static/style.css" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        let index = 0;
+
+        let outliers = {{outliers}}
+
+        let x_accel = {{x_accel}}
+        let y_accel = {{y_accel}}
+        let z_accel = {{z_accel}}
+
+        let in_mic = {{in_mic}}
+        let ex_mic = {{ex_mic}}
+        let cancelled_sound = {{cancelled_sound}}
+
+    </script>
+    <title>Sleep Monitoring</title>
+    <style>
+        .highcharts-title {
+            fill: white !important;
+        }
+        .highcharts-axis-title {
+            fill: lightgrey !important;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <button onclick= homePage() style="margin: 10px" class="btn">
+        <
+    </button>
+</div>
+<script type="text/javascript">
+    function homePage() {
+        window.location = '/'
+    }
+</script>
+<center>
+    <div id="heading" class="heading">
+        <h1>
+            Sleep Monitoring
+        </h1>
+        <h5 style="max-width: 70%">
+            Sleep monitoring was performed using an Adafruit MMA8451 accelerometer attached to the mattress of the bed. Sound capture and noise cancelling was achieved using two KY-037 microphones; one facing the window and one facing the bed.
+        </h5>
+    </div>
+</center>
+
+<center>
+    <div id="news-selection"style="max-width: 30%">
+        <form method="POST">
+            <div class="form-group">
+                <h3>{{date}}</h3>
+                <select id="date-select" onchange= changePage() class="select" name="news">
+                    <option value="" selected disabled hidden>Choose date</option>
+                    <option value=1>02-01-21</option>
+                    <option value=2>03-01-21</option>
+                    <option value=3>04-01-21</option>
+                    <option value=4>05-01-21</option>
+                    <option value=5>06-01-21</option>
+                    <option value=6>07-01-21</option>
+                    <option value=7>08-01-21</option>
+                </select>
+            </div>
+        </form>
+    </div>
+</center>
+<script type="text/javascript">
+    function changePage() {
+        let value = document.getElementById("date-select").value
+        let newPage = '/sleep/' + value
+        window.location = newPage
+    }
+</script>
+<center>
+    <div id="outliers">
+        <h3 id="restless-events" style="margin-bottom: 0"> </h3>
+        <h5 style="color: lightgrey">(Outliers within accelerometer data)</h5>
+        <h3 id="internal-disturbances" style="margin-top: 20"> </h3>
+        <h3 id="external-disturbances"> </h3>
+        <script type="text/javascript">
+            let text1 = document.getElementById('restless-events')
+            let text2 = document.getElementById('internal-disturbances')
+            let text3 = document.getElementById('external-disturbances')
+            text1.innerText = 'Restless events: ' + {{outliers[0]}}
+            text2.innerText = 'Internal disturbances: ' + {{outliers[1]}}
+            text3.innerText = 'External disturbances: ' + {{outliers[2]}}
+            document.getElementById("date-select").addEventListener('change', e => {
+                let index = document.getElementById("date-select").value;
+                let restless_events = outliers[0]
+                let internal_disturbances = outliers[1]
+                let external_disturbances = outliers[2]
+                let restless_events_str = 'Restless events: ' + restless_events
+                let internal_disturbances_str = 'Internal disturbances: ' + internal_disturbances
+                let external_disturbances_str = 'External disturbances: ' + external_disturbances
+                text1.innerText= restless_events_str
+                text2.innerText = internal_disturbances_str
+                text3.innerText = external_disturbances_str
+            })
+        </script>
+    </div>
+</center>
+
+<div id="container1" style="width:70%; height:700px; padding:50px; margin: auto"></div>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        const chart = Highcharts.chart('container1', {
+            chart: {
+                type: 'line',
+                zoomType: 'xy',
+                panning: true,
+                panKey: 'shift',
+                backgroundColor: '#080808',
+                color: '#ffffff',
+                style: {
+                    fontFamily: 'sans-serif'
+                }
+            },
+            title: {
+                text: 'Accelerometer data',
+                color: '#ffffff',
+                fill: '#ffffff'
+            },
+            credits:{
+                enabled: false
+            },
+            xAxis: {
+                title: {
+                    text:'Time'
+                },
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'Accelerometer'
+                },
+                type: 'linear'
+            },
+            series: [{name: 'x', data: x_accel}, {name: 'y', data: y_accel}, {name: 'z', data: z_accel}]
+        });
+    });
+</script>
+
+<div id="container2" style="width:70%; height:700px; padding: 50px; margin: auto"></div>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        const chart = Highcharts.chart('container2', {
+            chart: {
+                type: 'scatter',
+                zoomType: 'xy',
+                panning: true,
+                panKey: 'shift',
+                backgroundColor: '#080808',
+                style: {
+                    fontFamily: 'sans-serif'
+                }
+            },
+            title: {
+                text: 'Sound data'
+            },
+            credits:{
+                enabled: false
+            },
+            xAxis: {
+                title: {
+                    text:'Time'
+                },
+                type: 'datetime'
+            },
+            yAxis: [{
+                title: {
+                    text: 'Loudness'
+                },
+                type: 'linear'
+            }],
+            series: [{yAxis: 0, name:'Noise-cancelled Sound', data: cancelled_sound}, {yAxis: 0, name: 'Internal Sound', data: in_mic, visible: false}, {yAxis: 0, name:'External Sound', data: ex_mic, visible: false}]
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../static/style.css" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript">
+        const news_data = {{news_data}}
+        const guardian_scores = news_data[0]
+        const bbc_scores = news_data[1]
+
+        const outliers = {{outliers}}
+        const correlation = {{correlation}}
+
+    </script>
+    <title>Comparison</title>
+    <style>
+        .highcharts-title {
+            fill: white !important;
+        }
+        .highcharts-axis-title {
+            fill: lightgrey !important;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <button onclick= homePage() style="margin: 10px" class="btn">
+        <
+    </button>
+</div>
+<script type="text/javascript">
+    function homePage() {
+        window.location = '/'
+    }
+</script>
+<center>
+    <div id="heading" class="heading">
+        <h1>
+            Comparison
+        </h1>
+    </div>
+    <div id="container1" style="width:70%; height:700px; padding:50px; margin: auto"></div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            const chart = Highcharts.chart('container1', {
+                chart: {
+                    type: 'line',
+                    zoomType: 'xy',
+                    panning: true,
+                    panKey: 'shift',
+                    backgroundColor: '#080808',
+                    style: {
+                        fontFamily: 'sans-serif',
+                        color: '#ffffff'
+                    }
+                },
+                title: {
+                    text: 'Sentiment analysis data',
+                },
+                credits: {
+                    enabled: false
+                },
+                xAxis: {
+                    title: {
+                        text: 'Time'
+                    },
+                    type: 'linear',
+                },
+                yAxis: [{
+                    title: {
+                        text: 'Sentiment score'
+                    },
+                    type: 'linear'
+                },{
+                    title: {
+                        text: 'Number of restless moments'
+                    },
+                    type: 'linear',
+                    opposite: true
+                }],
+                series: [{yAxis: 1, name: 'Restlessness', data: outliers[0]}, {yAxis: 0, name: 'Guardian Sentiment', data: guardian_scores}, {yAxis: 0, name: 'BBC Sentiment', data: bbc_scores}],
+            });
+        })
+    </script>
+    <div>
+
+        <h3 style="margin-bottom: 0">News Sentiment Correlation</h3>
+        <h5 style="color: lightgrey">Based on Pearson correlation coefficient</h5>
+        <header style="display: inline-flex">
+            <h3> The Guardian correlation: </h3>
+            <h3>{{correlation[0]}}</h3>
+        </header>
+        <div> </div>
+        <header style="display: inline-flex">
+            <h3> BBC correlation: </h3>
+            <h3>{{correlation[1]}}</h3>
+        </header>
+    </div>
+    <div id="container2" style="width:70%; height:700px; padding:50px; margin: auto"></div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            const chart = Highcharts.chart('container2', {
+                chart: {
+                    type: 'line',
+                    zoomType: 'xy',
+                    panning: true,
+                    panKey: 'shift',
+                    backgroundColor: '#080808',
+                    style: {
+                        fontFamily: 'sans-serif'
+                    }
+                },
+                title: {
+                    text: 'Noise data'
+                },
+                credits: {
+                    enabled: false
+                },
+                xAxis: {
+                    title: {
+                        text: 'Time'
+                    },
+                    type: 'linear'
+                },
+                yAxis: [{
+                    title: {
+                        text: 'Noise'
+                    },
+                    type: 'linear'
+                },{
+                    title: {
+                        text: 'Number of restless moments'
+                    },
+                    type: 'linear',
+                    opposite: true
+                }],
+                series: [{yAxis: 1, name: 'Restlessness', data: outliers[0]}, {yAxis: 0, name: 'Internal disturbances', data: outliers[1]}, {yAxis: 0, name: 'External Disturbances', data: outliers[2]}]
+            });
+        })
+    </script>
+    <div>
+        <h3>Sound Correlation</h3>
+        <h5 style="color: lightgrey">Based on Pearson correlation coefficient</h5>
+        <header style="display: inline-flex">
+            <h3> Internal noise correlation: </h3>
+            <h3>{{correlation[2]}}</h3>
+        </header>
+        <div> </div>
+        <header style="display: inline-flex">
+            <h3> External noise correlation: </h3>
+            <h3>{{correlation[3]}}</h3>
+        </header>
+    </div>
+</center>
+</body>
+</html>
