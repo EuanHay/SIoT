@@ -19,7 +19,7 @@ def return_column_data(data, column_number):
 
 
 def get_sleep_data(sheet_number):
-    gc = gspread.service_account(filename='C:/Users/euanh/Documents/Imperial/Design Engineering/Year 4/IoT and Sensing/Coursework/service_account.json')
+    gc = gspread.service_account(filename='service_account.json')
     sh = gc.open('Sleep data')
 
     sheets = sh.worksheets()
@@ -37,7 +37,7 @@ def get_sleep_data(sheet_number):
 
 def get_all_sleep_data():
     all_data = []
-    gc = gspread.service_account(filename='C:/Users/euanh/Documents/Imperial/Design Engineering/Year 4/IoT and Sensing/Coursework/service_account.json')
+    gc = gspread.service_account(filename='service_account.json')
     sh = gc.open('Sleep data')
     sheets = sh.worksheets()
 
@@ -55,7 +55,7 @@ def get_all_sleep_data():
 
 
 def get_news_data():
-    gc = gspread.service_account(filename='C:/Users/euanh/Documents/Imperial/Design Engineering/Year 4/IoT and Sensing/Coursework/service_account.json')
+    gc = gspread.service_account(filename='service_account.json')
     sh = gc.open('News data')
 
     sheets = sh.worksheets()
